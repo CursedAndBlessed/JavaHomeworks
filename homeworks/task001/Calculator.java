@@ -7,7 +7,15 @@ public class Calculator {
     BinaryOperator<Integer> plus = (x, y) -> x + y;
     BinaryOperator<Integer> minus = (x, y) -> x - y;
     BinaryOperator<Integer> multiply = (x, y) -> x * y;
-    BinaryOperator<Integer> devide = (x, y) -> x / y;
+    BinaryOperator<Integer> devide = (x, y) -> {
+        try {
+            return x / y;
+        } catch (ArithmeticException exception) {
+            throw new ArithmeticException("Деление на 0");
+        }
+
+    };
+
 
     UnaryOperator<Integer> pow = x -> x * x;
     UnaryOperator<Integer> abs = x -> x > 0 ? x : x * -1;
